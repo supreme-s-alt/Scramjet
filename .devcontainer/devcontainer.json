@@ -1,8 +1,0 @@
-{
-  "name": "Node.js 16 Project",
-  "image": "://microsoft.com",
-  "features": {
-    "ghcr.io/devcontainers/features/git:1": {}
-  },
-  "postCreateCommand": "node -v && git --version"
-}
