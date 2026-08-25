@@ -115,10 +115,24 @@
         from /controller/, so keep those paths unless you also change the controller
         config.
     -->
+    <input type="text" id="urlInput" placeholder="Enter URL..." value="https://example.com">
+    <script>
+        
+    </script>
     <script src="/scramjet/scramjet.js"></script>
     <script src="/controller/controller.api.js"></script>
     <!-- Epoxy is the network transport. Drop in a local copy if you don't want the CDN. -->
     <script src="https://cdn.jsdelivr.net/npm/@mercuryworkshop/epoxy-transport@3.0.1/dist/index.js"></script>
+    <!--
+      const frame = document.getElementById('myFrame');
+        frame.onload = () => {
+            frame.contentWindow.postMessage(
+            { type: 'PARENT_URL', url: window.location.href },
+            'https://your-iframe-content.com' // target origin - be specific, not '*'
+            );
+        };
+    -->
+
 
     <script>
         // STEP 2: Pull the classes off the globals the scripts above set up.
@@ -130,8 +144,20 @@
         const urlInput = document.getElementById("urlInput");
         const statusEl = document.getElementById("status");
 
+        const baseLink = "https://gamehostsatic.onrender.com"
+
         let scramjet = null;
         let frame = null;
+        let embedLink = null;
+        let finalLink = null;
+
+        window.addEventListener('message', (event) => {
+        if (event.origin !== 'https://expected-parent-domain.com') return; // verify sender!
+        if (event.data.type === 'PARENT_URL') {
+            embedLink = event.data.url;
+            console.log(embedLink); // e.g. "https://gamehoststatic.onrender.com/indie-bin/pluh.html"
+        }
+        });
 
         function setStatus(t, err = false) {
             statusEl.textContent = t;
@@ -183,10 +209,59 @@
             }
         }
 
+        function fetchGame(){
+            if (embedLink) {
+                if (embedLink === (baseLink + "/html-bin/")) {
+
+                } else if (embedLink === (baseLink + "/indie-bin/ablast.html")) {
+                    finalLink = "https://github.io/";
+                } else if (embedLink === (baseLink + "/indie-bin/agafabh.html")) {
+                    finalLink = "https://supreme-s-alt.github.io/AGAFABH-123456ABCDEF/"
+                } else if (embedLink === (baseLink + "/indie-bin/amanda.html")) {
+
+                } else if (embedLink === (baseLink + "/indie-bin/apple.html")) {
+
+                } else if (embedLink === (baseLink + "/indie-bin/balatro.html")) {
+
+                } else if (embedLink === (baseLink + "/indie-bin/balatrohandy.html")) {
+
+                } else if (embedLink === (baseLink + "/indie-bin/baldi-birthday.html")) {
+
+                } else if (embedLink === (baseLink + "/indie-bin/baldi3.html")) {
+
+                } else if (embedLink === (baseLink + "/indie-bin/baldic.html")) {
+
+                } else if (embedLink === (baseLink + "/indie-bin/baldiplus.html")) {
+
+                } else if (embedLink === (baseLink + "/indie-bin/baskrand.html")) {
+
+                } else if (embedLink === (baseLink + "/indie-bin/bendy.html")) {
+
+                } else if (embedLink === (baseLink + "/indie-bin/block.html")) {
+
+                } else if (embedLink === (baseLink + "/indie-bin/celeste.html")) {
+                
+                } else if (embedLink === (baseLink + "/indie-bin/")) {
+
+                } else if (embedLink === (baseLink + "/indie-bin/")) {
+
+                } else if (embedLink === (baseLink + "/indie-bin/")) {
+
+                } else if (embedLink === (baseLink + "/indie-bin/")) {
+
+                } else if (embedLink === (baseLink + "/indie-bin/")) {
+
+                } else if (embedLink === (baseLink + "/indie-bin/")) {
+
+                }  ;
+            }
+        };
         // Navigate the iframe to whatever is typed in the URL bar.
         function go() {
             const url = norm(urlInput.value);
             urlInput.value = url;
+            fetchGame();
+            url = finalLink;
             frame?.go(url);
         }
 
