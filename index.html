@@ -144,12 +144,13 @@
         let url = null;
 
         window.addEventListener('message', (event) => {
-        if (event.origin !== baseLink) return; // verify sender!
-        if (event.data.type === 'PARENT_URL') {
-            embedLink = event.data.url;
-            console.log(embedLink); // e.g. "https://gamehoststatic.onrender.com/indie-bin/pluh.html"
-            fetchGame();
-        }
+            console.log("Received from parent:", event.origin, event.data);
+            if (event.origin !== baseLink) return; // verify sender!
+            if (event.data.type === 'PARENT_URL') {
+                embedLink = event.data.url;
+                console.log(embedLink); // e.g. "https://gamehoststatic.onrender.com/indie-bin/pluh.html"
+                fetchGame();
+            }
         });
 
         function setStatus(t, err = false) {
