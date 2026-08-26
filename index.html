@@ -98,7 +98,7 @@
                 <button id="forwardBtn" title="Forward">→</button>
                 <button id="reloadBtn" title="Reload">↻</button>
             </div>-->
-            <input type="text" id="urlInput" placeholder="Enter URL..." value="https://supreme-s-alt.github.io/CLSTE-12A3BC4EFG5">
+            <input type="text" id="urlInput" placeholder="Enter URL..." value="https://google.com">
             <!--<button id="goBtn">Go</button>-->
             <div class="status" id="status">Ready</div>
         </div>
@@ -140,7 +140,10 @@
         let url = null;
 
         window.addEventListener('message', (event) => {
-            console.log("Received from parent:", event.origin, event.data);
+            console.log("Received from parent:", {
+                origin: event.origin, 
+                data: event.data
+            });
             if (event.origin !== "https://gamehoststatic.onrender.com") return; // verify sender!
             if (event.data.type === 'PARENT_URL') {
                 embedLink = event.data.url;
@@ -193,7 +196,7 @@
                 if (embedLink) {
                     fetchGame();
                 } else {
-                    frame.go("https://supreme-s-alt.github.io/CLSTE-12A3BC4EFG5");
+                    frame.go("https://google.com");
                 }
 
                 setStatus("Ready");
