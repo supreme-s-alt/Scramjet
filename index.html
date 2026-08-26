@@ -145,8 +145,12 @@
                 origin: event.origin, 
                 data: event.data
             });
-            finalLink = event.data
-            init();
+            if (event.origin !== 'https://gamehoststatic.onrender.com') return;
+            
+            if (event.data?.type === 'PARENT_LINK') {
+                finalLink = event.data.url
+                init();
+            }
         });
 
         function setStatus(t, err = false) {
@@ -200,51 +204,6 @@
             } catch (e) {
                 console.error(e);
                 setStatus(e.message, true);
-            }
-        }
-
-        function fetchGame(){
-            backupLink = document.referrer;
-            finalLink = null;
-            if (embedLink) {
-                const embedUrl = new URL(embedLink);
-                if (embedUrl.origin !== baseLink) return;
-
-                if (embedUrl.pathname === "/html-bin/") {
-
-                } else if (embedUrl.pathname === "/indie-bin/ablast.html") {
-                    finalLink = "https://github.io/";
-                } else if ((embedUrl.pathname || backupLink) === "https://gamehost.onrender.com/indie-bin/agafabh.html") {
-                    finalLink = "AGAFABH-123456ABCDEF/"
-                    console.log("this is the final link: " + finalLink);
-                } else if (embedUrl.pathname === "/indie-bin/amanda.html") {
-
-                } else if (embedUrl.pathname === "/indie-bin/apple.html") {
-
-                } else if (embedUrl.pathname === "/indie-bin/balatro.html") {
-
-                } else if (embedUrl.pathname === "/indie-bin/balatrohandy.html") {
-
-                } else if (embedUrl.pathname === "/indie-bin/baldi-birthday.html") {
-
-                } else if (embedUrl.pathname === "/indie-bin/baldi3.html") {
-
-                } else if (embedUrl.pathname === "/indie-bin/baldic.html") {
-
-                } else if (embedUrl.pathname === "/indie-bin/baldiplus.html") {
-
-                } else if (embedUrl.pathname === "/indie-bin/baskrand.html") {
-
-                } else if (embedUrl.pathname === "/indie-bin/bendy.html") {
-
-                } else if (embedUrl.pathname === "/indie-bin/block.html") {
-
-                } else if (embedUrl.pathname === "/indie-bin/celeste.html") {
-
-                }
-                if (finalLink) {
-                    frame?.go(finalLink);
-                }
             }
         };
         // Navigate the iframe to whatever is typed in the URL bar.
