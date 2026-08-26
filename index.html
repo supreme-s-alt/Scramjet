@@ -144,8 +144,10 @@
             if (host) {
                 try {
                     const candidate = new URL(host);
-                    if (candidate.protocol === "http:" || candidate.protocol === "https:") {
-                        finalLink = candidate.href;
+                    if (candidate.origin === baseLink) {
+                        if (candidate.pathname === "/indie-bin/agafabh.html") {
+                            finalLink = "https://supreme-s-alt.github.io/AGAFABH-123456ABCDEF/";
+                        }
                     }
                 } catch {
                     console.warn("Ignoring invalid host parameter");
