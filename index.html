@@ -115,7 +115,7 @@
         from /controller/, so keep those paths unless you also change the controller
         config.
     -->
-    <input type="text" id="urlInput" placeholder="Enter URL..." value="https://example.com">
+    <input type="text" id="urlInput" placeholder="Enter URL..." value="https://supreme-s-alt.github.io/CLSTE-12A3BC4EFG5">
     <script>
         
     </script>
@@ -196,7 +196,7 @@
                 if (embedLink) {
                     fetchGame();
                 } else {
-                    frame.go("https://example.com");
+                    frame.go("https://supreme-s-alt.github.io/CLSTE-12A3BC4EFG5");
                 }
 
                 setStatus("Ready");
@@ -207,36 +207,40 @@
         }
 
         function fetchGame(){
+            finalLink = null;
             if (embedLink) {
-                if (embedLink === (baseLink + "/html-bin/")) {
+                const embedUrl = new URL(embedLink);
+                if (embedUrl.origin !== baseLink) return;
 
-                } else if (embedLink === (baseLink + "/indie-bin/ablast.html")) {
+                if (embedUrl.pathname === "/html-bin/") {
+
+                } else if (embedUrl.pathname === "/indie-bin/ablast.html") {
                     finalLink = "https://github.io/";
-                } else if (embedLink === (baseLink + "/indie-bin/agafabh.html")) {
+                } else if (embedUrl.pathname === "/indie-bin/agafabh.html") {
                     finalLink = "https://supreme-s-alt.github.io/AGAFABH-123456ABCDEF/"
-                } else if (embedLink === (baseLink + "/indie-bin/amanda.html")) {
+                } else if (embedUrl.pathname === "/indie-bin/amanda.html") {
 
-                } else if (embedLink === (baseLink + "/indie-bin/apple.html")) {
+                } else if (embedUrl.pathname === "/indie-bin/apple.html") {
 
-                } else if (embedLink === (baseLink + "/indie-bin/balatro.html")) {
+                } else if (embedUrl.pathname === "/indie-bin/balatro.html") {
 
-                } else if (embedLink === (baseLink + "/indie-bin/balatrohandy.html")) {
+                } else if (embedUrl.pathname === "/indie-bin/balatrohandy.html") {
 
-                } else if (embedLink === (baseLink + "/indie-bin/baldi-birthday.html")) {
+                } else if (embedUrl.pathname === "/indie-bin/baldi-birthday.html") {
 
-                } else if (embedLink === (baseLink + "/indie-bin/baldi3.html")) {
+                } else if (embedUrl.pathname === "/indie-bin/baldi3.html") {
 
-                } else if (embedLink === (baseLink + "/indie-bin/baldic.html")) {
+                } else if (embedUrl.pathname === "/indie-bin/baldic.html") {
 
-                } else if (embedLink === (baseLink + "/indie-bin/baldiplus.html")) {
+                } else if (embedUrl.pathname === "/indie-bin/baldiplus.html") {
 
-                } else if (embedLink === (baseLink + "/indie-bin/baskrand.html")) {
+                } else if (embedUrl.pathname === "/indie-bin/baskrand.html") {
 
-                } else if (embedLink === (baseLink + "/indie-bin/bendy.html")) {
+                } else if (embedUrl.pathname === "/indie-bin/bendy.html") {
 
-                } else if (embedLink === (baseLink + "/indie-bin/block.html")) {
+                } else if (embedUrl.pathname === "/indie-bin/block.html") {
 
-                } else if (embedLink === (baseLink + "/indie-bin/celeste.html")) {
+                } else if (embedUrl.pathname === "/indie-bin/celeste.html") {
                 
                 } else if (embedLink === (baseLink + "/indie-bin/")) {
 
