@@ -98,7 +98,7 @@
                 <button id="forwardBtn" title="Forward">→</button>
                 <button id="reloadBtn" title="Reload">↻</button>
             </div>-->
-            <input type="text" id="urlInput" placeholder="Enter URL..." value="https://google.com">
+            <input type="text" id="urlInput" placeholder="Enter URL..." value="https://supreme-s-alt.github.io/HAYAI/">
             <!--<button id="goBtn">Go</button>-->
             <div class="status" id="status">Ready</div>
         </div>
@@ -137,6 +137,7 @@
         let frame = null;
         let embedLink = null;
         let finalLink = null;
+        let backupLink = null;
         let url = null;
 
         window.addEventListener('message', (event) => {
@@ -196,7 +197,7 @@
                 if (embedLink) {
                     fetchGame();
                 } else {
-                    frame.go("https://google.com");
+                    frame.go("https://supreme-s-alt.github.io/HAYAI/");
                 }
 
                 setStatus("Ready");
@@ -207,6 +208,7 @@
         }
 
         function fetchGame(){
+            backupLink = document.referrer;
             finalLink = null;
             if (embedLink) {
                 const embedUrl = new URL(embedLink);
@@ -216,8 +218,8 @@
 
                 } else if (embedUrl.pathname === "/indie-bin/ablast.html") {
                     finalLink = "https://github.io/";
-                } else if (embedUrl.pathname === "/indie-bin/agafabh.html") {
-                    finalLink = "https://supreme-s-alt.github.io/AGAFABH-123456ABCDEF/"
+                } else if ((embedUrl.pathname || backupLink) === "https://gamehost.onrender.com/indie-bin/agafabh.html") {
+                    finalLink = "AGAFABH-123456ABCDEF/"
                     console.log("this is the final link: " + finalLink);
                 } else if (embedUrl.pathname === "/indie-bin/amanda.html") {
 
