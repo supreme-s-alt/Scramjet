@@ -139,8 +139,8 @@
         let frame = null;
 
         if (!finishedEmbed) {
-            const params = new URLSearchParams(window.location.search);
-            finalLink = decodeURIComponent(params.get('host'));
+            const hashParams = new URLSearchParams(window.location.hash.slice(1));
+            finalLink = decodeURIComponent(hashParams.get('host'));
             console.log(finalLink);
         }
 
