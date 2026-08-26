@@ -133,27 +133,13 @@
 
         const baseLink = "https://gamehoststatic.onrender.com"
 
-        let scramjet = null;
-        let frame = null;
-        let embedLink = null;
-        let finalLink = null;
-        let backupLink = null;
-        let url = null;
-        window.addEventListener('message', handleMessage);
-           window.parent.postMessage({ type: 'EMBED_READY' }, 'https://gamehoststatic.onrender.com');
+        let finishedEmbed = false;
 
-        function handleMessage(event) {
-            console.log("Received from parent:", {
-                origin: event.origin, 
-                data: event.data
-            });
-            if (event.origin !== 'https://gamehoststatic.onrender.com') return;
-            
-            if (event.data?.type === 'PARENT_LINK') {
-                finalLink = event.data.url
-                init();
-            }
-        };
+        if (!finishedEmbed) {
+            const params = new URLSearchParams(window.location.search);
+            const finalLink = decodeURIComponent(params.get('host'));
+            console.log(finalLink);
+        }
 
         function setStatus(t, err = false) {
             statusEl.textContent = t;
@@ -201,7 +187,9 @@
                 } else {
                     frame.go("https://supreme-s-alt.github.io/HAYAI/");
                 }
-
+                if (frame === finalLink) {
+                    finishedEmbed = true;
+                }
                 setStatus("Ready");
             } catch (e) {
                 console.error(e);
