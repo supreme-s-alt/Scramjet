@@ -93,12 +93,12 @@
 <body>
     <div class="container">
         <div class="toolbar">
-            <div class="nav-buttons"><!--
+            <!--<div class="nav-buttons">
                 <button id="backBtn" title="Back">←</button>
                 <button id="forwardBtn" title="Forward">→</button>
-                <button id="reloadBtn" title="Reload">↻</button>-->
-            </div>
-            <input type="text" id="urlInput" placeholder="Enter URL..." value="https://google.com">
+                <button id="reloadBtn" title="Reload">↻</button>
+            </div>-->
+            <input type="text" id="urlInput" placeholder="Enter URL..." value="https://supreme-s-alt.github.io/CLSTE-12A3BC4EFG5">
             <!--<button id="goBtn">Go</button>-->
             <div class="status" id="status">Ready</div>
         </div>
@@ -115,10 +115,6 @@
         from /controller/, so keep those paths unless you also change the controller
         config.
     -->
-    <input type="text" id="urlInput" placeholder="Enter URL..." value="https://supreme-s-alt.github.io/CLSTE-12A3BC4EFG5">
-    <script>
-        
-    </script>
     <script src="/scramjet/scramjet.js"></script>
     <script src="/controller/controller.api.js"></script>
     <!-- Epoxy is the network transport. Drop in a local copy if you don't want the CDN. -->
@@ -145,7 +141,7 @@
 
         window.addEventListener('message', (event) => {
             console.log("Received from parent:", event.origin, event.data);
-            if (event.origin !== baseLink) return; // verify sender!
+            if (event.origin !== "https://gamehoststatic.onrender.com") return; // verify sender!
             if (event.data.type === 'PARENT_URL') {
                 embedLink = event.data.url;
                 console.log(embedLink); // e.g. "https://gamehoststatic.onrender.com/indie-bin/pluh.html"
@@ -219,6 +215,7 @@
                     finalLink = "https://github.io/";
                 } else if (embedUrl.pathname === "/indie-bin/agafabh.html") {
                     finalLink = "https://supreme-s-alt.github.io/AGAFABH-123456ABCDEF/"
+                    console.log("this is the final link: " + finalLink);
                 } else if (embedUrl.pathname === "/indie-bin/amanda.html") {
 
                 } else if (embedUrl.pathname === "/indie-bin/apple.html") {
@@ -242,20 +239,8 @@
                 } else if (embedUrl.pathname === "/indie-bin/block.html") {
 
                 } else if (embedUrl.pathname === "/indie-bin/celeste.html") {
-                
-                } else if (embedLink === (baseLink + "/indie-bin/")) {
 
-                } else if (embedLink === (baseLink + "/indie-bin/")) {
-
-                } else if (embedLink === (baseLink + "/indie-bin/")) {
-
-                } else if (embedLink === (baseLink + "/indie-bin/")) {
-
-                } else if (embedLink === (baseLink + "/indie-bin/")) {
-
-                } else if (embedLink === (baseLink + "/indie-bin/")) {
-
-                } ;
+                }
                 if (finalLink) {
                     frame?.go(finalLink);
                 }
