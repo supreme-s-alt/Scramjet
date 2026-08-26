@@ -133,11 +133,11 @@
 
         const baseLink = "https://gamehoststatic.onrender.com"
 
-        let finishedEmbed = false;
+        let finalLink = null;
 
         if (!finishedEmbed) {
             const params = new URLSearchParams(window.location.search);
-            const finalLink = decodeURIComponent(params.get('host'));
+            finalLink = decodeURIComponent(params.get('host'));
             console.log(finalLink);
         }
 
