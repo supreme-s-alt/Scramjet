@@ -139,6 +139,8 @@
         let finalLink = null;
         let backupLink = null;
         let url = null;
+        window.addEventListener('message', handleMessage);
+           window.parent.postMessage({ type: 'EMBED_READY' }, 'https://gamehoststatic.onrender.com');
 
         window.addEventListener('message', (event) => {
             console.log("Received from parent:", {
