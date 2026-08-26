@@ -140,7 +140,17 @@
 
         if (!finishedEmbed) {
             const hashParams = new URLSearchParams(window.location.hash.slice(1));
-            finalLink = decodeURIComponent(hashParams.get('host'));
+            const host = hashParams.get("host");
+            if (host) {
+                try {
+                    const candidate = new URL(host);
+                    if (candidate.protocol === "http:" || candidate.protocol === "https:") {
+                        finalLink = candidate.href;
+                    }
+                } catch {
+                    console.warn("Ignoring invalid host parameter");
+                }
+            }
             console.log(finalLink);
         }
 
