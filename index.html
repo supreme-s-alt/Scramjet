@@ -145,12 +145,8 @@
                 origin: event.origin, 
                 data: event.data
             });
-            if (event.origin !== "https://gamehoststatic.onrender.com") return; // verify sender!
-            if (event.data.type === 'PARENT_URL') {
-                embedLink = event.data.url;
-                console.log(embedLink); // e.g. "https://gamehoststatic.onrender.com/indie-bin/pluh.html"
-                fetchGame();
-            }
+            finalLink = event.data
+            init();
         });
 
         function setStatus(t, err = false) {
@@ -194,8 +190,8 @@
 
                 // STEP 5: Bind a frame to the <iframe> and navigate it.
                 frame = scramjet.createFrame(iframe);
-                if (embedLink) {
-                    fetchGame();
+                if (finalLink) {
+                    frame.go(finalLink)
                 } else {
                     frame.go("https://supreme-s-alt.github.io/HAYAI/");
                 }
