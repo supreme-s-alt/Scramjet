@@ -20,7 +20,7 @@
         }
 
         .toolbar {
-            display: flex;
+            display: none;
             gap: 8px;
             padding: 12px;
             background: #2d2d2d;
@@ -29,7 +29,7 @@
         }
 
         .nav-buttons {
-            display: flex;
+            display: none;
             gap: 4px;
         }
 
@@ -53,6 +53,7 @@
         }
 
         input {
+            display: none;
             flex: 1;
             padding: 8px 12px;
             border-radius: 6px;
@@ -68,6 +69,7 @@
         }
 
         .status {
+            display: none;
             padding: 4px 12px;
             background: #3d3d3d;
             border-radius: 6px;
@@ -92,7 +94,7 @@
 
 <body>
     <div class="container">
-        <!--<div class="toolbar">
+        <div class="toolbar">
             <div class="nav-buttons">
                 <button id="backBtn" title="Back">←</button>
                 <button id="forwardBtn" title="Forward">→</button>
@@ -101,8 +103,7 @@
             <input type="text" id="urlInput" placeholder="Enter URL..." value="https://supreme-s-alt.github.io/HAYAI/">
             button id="goBtn">Go</button>
             <div class="status" id="status">Ready</div>
-        </div>-->
-        <div class="status" id="status" style="display: none;">Ready</div>
+        </div>
         <iframe id="browserFrame" title="Scramjet Browser"></iframe>
     </div>
     <!--
