@@ -20,6 +20,7 @@
         }
 
         .toolbar {
+            display: none;
             gap: 8px;
             padding: 12px;
             background: #2d2d2d;
@@ -66,7 +67,7 @@
         }
 
         .status {
-
+            display: none;
             padding: 4px 12px;
             background: #3d3d3d;
             border-radius: 6px;
@@ -92,13 +93,13 @@
 <body>
     <div class="container">
         <div class="toolbar">
-            <div class="nav-buttons">
+            <!--<div class="nav-buttons">
                 <button id="backBtn" title="Back">←</button>
                 <button id="forwardBtn" title="Forward">→</button>
                 <button id="reloadBtn" title="Reload">↻</button>
             </div>
             <input type="text" id="urlInput" placeholder="Enter URL..." value="https://supreme-s-alt.github.io/HAYAI/">
-            <button id="goBtn">Go</button>
+            <button id="goBtn">Go</button>-->
             <div class="status" id="status">Ready</div>
         </div>
         <iframe id="browserFrame" title="Scramjet Browser"></iframe>
@@ -144,13 +145,13 @@
                     const candidate = new URL(host);
                     if (candidate.origin === baseLink) {
                         if (candidate.pathname === "/indie-bin/ablast.html") {
-                            finalLink = "https://supreme-s-alt.github.io/AGAFABH-123456ABCDEF/";
+                            finalLink = "/development.html";
                         } else if (candidate.pathname === "/indie-bin/agafabh.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
+                            finalLink = "https://supreme-s-alt.github.io/AGAFABH-123456ABCDEF/";
                         } else if (candidate.pathname === "/indie-bin/amanda.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
+                            finalLink = "./development.html";
                         } else if (candidate.pathname === "/indie-bin/apple.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
+                            finalLink = "../development.html";
                         } else if (candidate.pathname === "/indie-bin/balatro.html") {
                             finalLink = "https://scramjet-o9kx.onrender.com/development.html";
                         } else if (candidate.pathname === "/indie-bin/balatrohandy.html") {
