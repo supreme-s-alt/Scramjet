@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scramjet</title>
+    <title>Get the Most Out of AP – AP Students | College Board</title>
     <style>
         * {
             margin: 0;
@@ -118,19 +118,65 @@
     <script src="/scramjet/scramjet.js"></script>
     <script src="/controller/controller.api.js"></script>
     <!-- Epoxy is the network transport. Drop in a local copy if you don't want the CDN. -->
-    <script src="https://cdn.jsdelivr.net/npm/@mercuryworkshop/epoxy-transport@3.0.1/dist/index.js"></script>
+    <script src="/index.js"></script>
 
 
     <script>
         // STEP 2: Pull the classes off the globals the scripts above set up.
+        const main = "https://gamehoststatic.onrender.com"
+        const alt1 = "https://gamehoststatics.onrender.com"
+        const alt2 = "https://stopbanchess.onrender.com"
+        const alt3 = "https://rcsamh.onrender.com"
+        const alt4 = "https://rivercityscience.onrender.com"
+        const alt5 = "https://collegeboard-htoq.onrender.com"
+        const alt6 = "https://uh-summa-lumma-dooma-lumma.onrender.com"
+        const alt7 = "https://gamehoststatic.onrender.com"
+        const url = window.location.origin;
+        let pass = 1;
+
+        //Make it so that it checks the base link for any of these websites and if they are not found then it restores the search bar
+
+        if (document.title === "Get the Most Out of AP – AP Students | College Board" && pass !== 1) {
+            cloakMechanism();
+        } else if (pass != 1) {
+            embedInsj();
+        }
+        
+        // function cloakMechanism () {
+        //     Make the image appear so it cloaks better
+        //     const win = window.open('about:blank', '_blank');
+        //     if (!win) {
+        //         alert("Please allow pop-ups for this site to work!");
+        //         return;
+        //     }
+
+        //     win.document.body.style.margin = '0';
+        //     win.document.body.style.height = '100vh';
+
+        //     const iframe = win.document.createElement('iframe');
+            
+        //     iframe.style.width = '100%';
+        //     iframe.style.height = '100%';
+        //     iframe.style.border = 'none';
+        //     iframe.style.margin = '0';
+        //     iframe.style.padding = '0';
+        //     iframe.style.overflow = 'hidden';
+            
+        //     iframe.src = url;
+
+        //     win.document.body.appendChild(iframe);
+            
+        //     end = true;
+
+        //     win.document.title = "Get the Most 0ut of AP – AP Students | College Board.";
+        // };
+
         const { Controller } = $scramjetController;
         const { defaultConfig } = $scramjet;
         const EpoxyTransport = self.EpoxyTransport.default;
 
         const iframe = document.getElementById("browserFrame");
         const statusEl = document.getElementById("status");
-
-        const baseLink = "https://gamehoststatic.onrender.com"
 
         let finalLink = null;
         let finishedEmbed = false;
@@ -143,312 +189,10 @@
             if (host) {
                 try {
                     const candidate = new URL(host);
-                    if (candidate.origin === baseLink) {
-                        if (candidate.pathname === "/indie-bin/ablast.html") {
-                            finalLink = "https://supreme-s-alt.github.io/ABL-123456ABCDEF/";
-                        } else if (candidate.pathname === "/indie-bin/agafabh.html") {
-                            finalLink = "https://supreme-s-alt.github.io/AGAFABH-123456ABCDEF/";
-                        } else if (candidate.pathname === "/indie-bin/amanda.html") {
-                            finalLink = "https://supreme-s-alt.github.io/AMA-123456ABCDEF/";
-                        } else if (candidate.pathname === "/indie-bin/apple.html") {
-                            finalLink = "https://supreme-s-alt.github.io/APP-123456ABCDEF/";
-                        } else if (candidate.pathname === "/indie-bin/balatro.html") {
-                            finalLink = "https://supreme-s-alt.github.io/BAL-123456ABCDEF/";
-                        } else if (candidate.pathname === "/indie-bin/balatrohandy.html") {
-                            finalLink = "https://supreme-s-alt.github.io/BALHAND-123456ABCDEF/";
-                        } else if (candidate.pathname === "/indie-bin/baldi-birthday.html") {
-                            finalLink = "https://supreme-s-alt.github.io/BALDB-123456ABCDEF/";
-                        } else if (candidate.pathname === "/indie-bin/baldi3.html") {
-                            finalLink = "https://supreme-s-alt.github.io/BALD3-123456ABCDEF/";
-                        } else if (candidate.pathname === "/indie-bin/baldic.html") {
-                            finalLink = "https://supreme-s-alt.github.io/BALDC-123456ABCDEF/";
-                        } else if (candidate.pathname === "/indie-bin/baldiplus.html.html") {
-                            finalLink = "https://supreme-s-alt.github.io/BALD+-123456ABCDEF/";
-                        } else if (candidate.pathname === "/indie-bin/baskrand.html") {
-                            finalLink = "https://supreme-s-alt.github.io/bask-123456ABCDEF/";
-                        } else if (candidate.pathname === "/indie-bin/bendy.html") {
-                            finalLink = "https://supreme-s-alt.github.io/BEN-123456ABCDEF/";
-                        } else if (candidate.pathname === "/indie-bin/block.html") {
-                            finalLink = "https://supreme-s-alt.github.io/BLO-123456ABCDEF/";
-                        } else if (candidate.pathname === "/indie-bin/celeste.html") {
-                            finalLink = "https://supreme-s-alt.github.io/CEL-123456ABCDEF/";
-                        } else if (candidate.pathname === "/indie-bin/cuphead.html") {
-                            finalLink = "https://supreme-s-alt.github.io/CUP-123456ABCDEF/";
-                        } else if (candidate.pathname === "/indie-bin/deepest-sword.html") {
-                            finalLink = "https://supreme-s-alt.github.io/DEE-123456ABCDEF/";
-                        } else if (candidate.pathname === "/indie-bin/deltarune-1.html") {
-                            finalLink = "https://supreme-s-alt.github.io/DEL1-123456ABCDEF/";
-                        } else if (candidate.pathname === "/indie-bin/deltarune-2.html") {
-                            finalLink = "https://supreme-s-alt.github.io/DEL2-123456ABCDEF/";
-                        } else if (candidate.pathname === "/indie-bin/deltarune-3.html") {
-                            finalLink = "https://supreme-s-alt.github.io/DEL3-123456ABCDEF/";
-                        } else if (candidate.pathname === "/indie-bin/deltarune-4.html") {
-                            finalLink = "https://supreme-s-alt.github.io/DEL4-123456ABCDEF/";
-                        } else if (candidate.pathname === "/indie-bin/deltarune.html") {
-                            finalLink = "https://supreme-s-alt.github.io/DEL-123456ABCDEF/";
-                        } else if (candidate.pathname === "/indie-bin/deltaruneboss.html") {
-                            finalLink = "https://supreme-s-alt.github.io/DELB-123456ABCDEF/";
-                        } else if (candidate.pathname === "/indie-bin/deltaruneost.html") {
-                            finalLink = "https://supreme-s-alt.github.io/DELM-123456ABCDEF/";
-                        } else if (candidate.pathname === "/indie-bin/deltatraveler.html") {
-                            finalLink = "https://supreme-s-alt.github.io/DELT-123456ABCDEF/";
-                        } else if (candidate.pathname === "/indie-bin/dewvalley.html") {
-                            finalLink = "https://supreme-s-alt.github.io/DEW-123456ABCDEF/";
-                        } else if (candidate.pathname === "/indie-bin/eaglecraft.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/endoparasitic-2.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/endoparasitic.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fathom.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fb3.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnae.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnaf.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnaf1.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnaf2.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnaf3.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnaf4.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnafps.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnafsl.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnafucn.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnafw.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-2-hot-freestyle.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-2-hot.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-agoti.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-arcade.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-baldi.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-betrayal.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-bobnbosip.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-camellia.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-challengedd.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-dsides.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-dusttale.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-fancy.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-funkadelix.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-garcello.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-hank.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-hit.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-hotline.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-hypno.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-imposter.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-indie.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-lite.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-madness.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-matt-voiid.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-matt.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-midfight.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-neo.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-phantasm.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-pibby.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-picor.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-qt-rewired.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-qt.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-rewrite.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-salty.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-shaggy.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-shaggymatt.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-shistory.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-shucks.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-sky-redux.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-sky.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-soft.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-sonic.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-starlight.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-sunday.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-tabi.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-takeover.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-unloaded.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-whitty-erect.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnf-zardy.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fnfmods.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/fridaynightfunkin.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/goi.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/helltaker.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/hollow.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/ironlung.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/jsab.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/karlson.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/kindergarten.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/kindergarten1.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/kindergarten2.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/kindergarten3.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/lookoutside.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/money.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/neon.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/omori.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/pizza.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/potionsnshi.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/pvzgoty.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/raft.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/repo.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/roulette.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/runaway.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/silksong.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/slender.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/slime.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/sonic-exe.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/sunset.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/swi.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/tattletail.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/terraria.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/tmitw.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/tnmn.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/trombone.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/uk.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/ultrapool.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/undertale-10.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/undertale.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/undertaley.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/indie-bin/webfishing.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/html-bin/adofai.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/html-bin/anvbattles.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/html-bin/bics2.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/html-bin/bics3.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/html-bin/cookie.html") {
-                            finalLink = "https://orteil.dashnet.org/cookieclicker/";
-                        } else if (candidate.pathname === "/html-bin/cross.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/html-bin/eggy.html") {
-                            finalLink = "https://supreme-s-alt.github.com/Eggy-car/";
-                        } else if (candidate.pathname === "/html-bin/firewater4.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/html-bin/flying-gorilla.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/html-bin/game-inside.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/html-bin/hard.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/html-bin/idle-b.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/html-bin/joyride.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/html-bin/MVSL.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/html-bin/ngon.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/html-bin/osu!.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/html-bin/shellshock.html") {
-                            finalLink = "https://shellshock.io";
-                        } else if (candidate.pathname === "/html-bin/sm64.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/html-bin/smario.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/html-bin/underfell.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/html-bin/undyne.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/html-bin/wordle.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/html-bin/worst.html") {
-                            finalLink = "https://scramjet-o9kx.onrender.com/development.html";
-                        } else if (candidate.pathname === "/html-bin/electoral.html") {
-                            finalLink = "https://uploads.ungrounded.net/alternate/7541000/7541145_alternate_350803_r2.zip/?NewgroundsAPI_PublisherID=1&NewgroundsAPI_SandboxID=6aa06cd47f64e&NewgroundsAPI_SessionID=&NewgroundsAPI_UserName=%26lt%3Bdeleted%26gt%3B&NewgroundsAPI_UserID=0&ng_username=%26lt%3Bdeleted%26gt%3B";
-                        }
+                    if (candidate.origin === main) {
+                        finalLink = "https://gamehoststatic.onrender.com"
+                    } else if (candidate.origin === baseLink) {
+                        finalLink = "https://gamehoststatics.onrender.com"
                     }
                 } catch {
                     console.warn("Ignoring invalid host parameter");
@@ -501,7 +245,7 @@
                 if (finalLink) {
                     frame.go(finalLink)
                 } else {
-                    frame.go("https://uploads.ungrounded.net/alternate/7541000/7541145_alternate_350803_r2.zip/?NewgroundsAPI_PublisherID=1&NewgroundsAPI_SandboxID=6aa06cd47f64e&NewgroundsAPI_SessionID=&NewgroundsAPI_UserName=%26lt%3Bdeleted%26gt%3B&NewgroundsAPI_UserID=0&ng_username=%26lt%3Bdeleted%26gt%3B");
+                    frame.go("https://gamehoststatic.onrender.com");
                 }
                 if (frame === finalLink) {
                     finishedEmbed = true;
