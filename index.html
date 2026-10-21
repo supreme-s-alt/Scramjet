@@ -194,7 +194,16 @@
             if (host) {
                 try {
                     const candidate = new URL(host);
+                    if (candidate.pathname === "https://gamehoststatic.onrender.com" 
+                    || candidate.pathname === "https://gamehoststatics.onrender.com"
+                    || candidate.pathname === "https://stopbanchess.onrender.com"
+                    || candidate.pathname === "https://rcsamh.onrender.com"
+                    || candidate.pathname === "https://rivercityscience.onrender.com"
+                    || candidate.pathname === "https://collegeboard-htoq.onrender.com"
+                    || candidate.pathname === "https://uh-summa-lumma-dooma-lumma.onrender.com"
+                    || candidate.pathname === "https://gamehoststatic.onrender.com") {
                     finalLink = "https://gamehoststatic.onrender.com"
+                    }
                 } catch {
                     console.warn("Ignoring invalid host parameter");
                 }
