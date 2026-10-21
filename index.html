@@ -187,7 +187,7 @@
         let finishedEmbed = false;
         let scramjet = null;
         let frame = null;
-
+        //This was build to embed through an embed, so remove the parts that involve the first embed
         if (!finishedEmbed) {
             const hashParams = new URLSearchParams(window.location.hash.slice(1));
             const host = hashParams.get("host");
@@ -255,7 +255,7 @@
                 if (finalLink) {
                     frame.go(finalLink)
                 } else {
-                    frame.go("https://collegeboard.com");
+                    frame.go("https://gamehoststatic.onrender.com");
                 }
                 if (frame === finalLink) {
                     finishedEmbed = true;
