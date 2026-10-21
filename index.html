@@ -189,11 +189,7 @@
             if (host) {
                 try {
                     const candidate = new URL(host);
-                    if (candidate.origin === main) {
-                        finalLink = "https://gamehoststatic.onrender.com"
-                    } else if (candidate.origin === baseLink) {
-                        finalLink = "https://gamehoststatics.onrender.com"
-                    }
+                    finalLink = "https://gamehoststatic.onrender.com"
                 } catch {
                     console.warn("Ignoring invalid host parameter");
                 }
@@ -245,7 +241,7 @@
                 if (finalLink) {
                     frame.go(finalLink)
                 } else {
-                    frame.go("https://gamehoststatic.onrender.com");
+                    frame.go("https://collegeboard.com");
                 }
                 if (frame === finalLink) {
                     finishedEmbed = true;
