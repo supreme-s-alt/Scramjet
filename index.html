@@ -160,9 +160,25 @@
             const iframe = document.getElementById("browserFrame");
             const statusEl = document.getElementById("status");
 
+            const main = "https://gamehoststatic.onrender.com"
+            const alt1 = "https://gamehoststatics.onrender.com"
+            const alt2 = "https://stopbanchess.onrender.com"
+            const alt3 = "https://rcsamh.onrender.com"
+            const alt4 = "https://rivercityscience.onrender.com"
+            const alt5 = "https://collegeboard-htoq.onrender.com"
+            const alt6 = "https://uh-summa-lumma-dooma-lumma.onrender.com"
+            const alt7 = "https://gamehoststatic.onrender.com"
+            const url = window.location.origin;
+            
             let scramjet = null;
             let frame = null;
 
+            let pass = 0;
+
+            //Make it so that it checks the base link for any of these websites and if they are not found then it restores the search bar
+            if ((url === "https://gamehoststatic.onrender.com" || "https://stopbanchess.onrender.com" || "https://rcsamh.onrender.com" || "https://rivercityscience.onrender.com" || "https://collegeboard-htoq.onrender.com" || "https://uh-summa-lumma-dooma-lumma.onrender.com" || "https://gamehoststatic.onrender.com") && (pass != 1)) {
+                finalLink = "https://gamehoststatics.onrender.com"
+            }
             function setStatus(t, err = false) {
                 statusEl.textContent = t;
                 statusEl.style.color = err ? "#ff6b6b" : "#aaa";
@@ -204,7 +220,11 @@
 
                     // STEP 5: Bind a frame to the <iframe> and navigate it.
                     frame = scramjet.createFrame(iframe);
-                    frame.go("https://collegeboard.com");
+                    if (finalLink) {
+                        frame.go(finalLink);
+                    } else {
+                        frame.go("https://collegeboard.com");
+                    }
                     setStatus("Ready");
                 } catch (e) {
                     console.error(e);
