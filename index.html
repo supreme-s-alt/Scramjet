@@ -125,61 +125,30 @@
 
     <script>
         // STEP 2: Pull the classes off the globals the scripts above set up.
-        const main = "https://gamehoststatic.onrender.com"
-        const alt1 = "https://gamehoststatics.onrender.com"
-        const alt2 = "https://stopbanchess.onrender.com"
-        const alt3 = "https://rcsamh.onrender.com"
-        const alt4 = "https://rivercityscience.onrender.com"
-        const alt5 = "https://collegeboard-htoq.onrender.com"
-        const alt6 = "https://uh-summa-lumma-dooma-lumma.onrender.com"
-        const alt7 = "https://gamehoststatic.onrender.com"
-        const url = window.location.origin;
-        let pass = 0;
 
-        //Make it so that it checks the base link for any of these websites and if they are not found then it restores the search bar
-        if ((url === "https://gamehoststatic.onrender.com" || "https://gamehoststatics.onrender.com" || "https://stopbanchess.onrender.com" || "https://rcsamh.onrender.com" || "https://rivercityscience.onrender.com" || "https://collegeboard-htoq.onrender.com" || "https://uh-summa-lumma-dooma-lumma.onrender.com" || "https://gamehoststatic.onrender.com") && (pass != 1)) {
-            if (document.title === "Get the Most Out of AP – AP Students | College Board" && pass !== 1) {
-                cloakMechanism();
-            } else if (pass != 1) {
+        const openedInBlank = new URLSearchParams(window.location.search).has("openedInBlank");
+
+        if (openedInBlank) {
+            embedInsj();
+        } else {
+            const popup = window.open("about:blank", "_blank");
+            if (popup) {
+                const appUrl = new URL(window.location.href);
+                appUrl.searchParams.set("openedInBlank", "1");
+
+                popup.document.title = document.title;
+                popup.document.body.style.cssText = "margin: 0; height: 100vh;";
+
+                const appFrame = popup.document.createElement("iframe");
+                appFrame.title = document.title;
+                appFrame.style.cssText = "width: 100%; height: 100%; border: 0;";
+                appFrame.src = appUrl.href;
+                popup.document.body.appendChild(appFrame);
+            } else {
+                console.warn("Popup was blocked; opening the app in this tab.");
                 embedInsj();
             }
-            pass +=1 
-        } else {
-            embedInsj();
-            pass +=1 
         }
-        
-        function cloakMechanism () {
-            const cloakimg = document.getElementById("cloakimg")
-            
-            cloakimg.style.visiblity = "visible"
-
-            const win = window.open('about:blank', '_blank');
-            if (!win) {
-                alert("Please allow pop-ups for this site to work!");
-                return;
-            }
-
-            win.document.body.style.margin = '0';
-            win.document.body.style.height = '100vh';
-
-            const iframe = win.document.createElement('iframe');
-            
-            iframe.style.width = '100%';
-            iframe.style.height = '100%';
-            iframe.style.border = 'none';
-            iframe.style.margin = '0';
-            iframe.style.padding = '0';
-            iframe.style.overflow = 'hidden';
-            
-            iframe.src = url;
-
-            win.document.body.appendChild(iframe);
-            
-            end = true;
-
-            win.document.title = "Get the Most 0ut of AP – AP Students | College Board.";
-        };
 
         function embedInsj() {
             const { Controller } = $scramjetController;
