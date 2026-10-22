@@ -131,6 +131,8 @@
         if (openedInBlank) {
             embedInsj();
         } else {
+            const cloakimg = document.getElementById("cloakimg");
+            cloakimg.style.visibility = "visible"
             const popup = window.open("about:blank", "_blank");
             if (popup) {
                 const appUrl = new URL(window.location.href);
