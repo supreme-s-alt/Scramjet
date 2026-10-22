@@ -95,12 +95,12 @@
     <div class="container">
         <div class="toolbar">
             <!--<div class="nav-buttons">
-                <button id="backBtn" title="Back">←</button>
-                <button id="forwardBtn" title="Forward">→</button>
-                <button id="reloadBtn" title="Reload">↻</button>
+                <button id="backBtn" title="Back" display="none">←</button>
+                <button id="forwardBtn" title="Forward" display="none">→</button>
+                <button id="reloadBtn" title="Reload" display="none">↻</button>
             </div>
-            <input type="text" id="urlInput" placeholder="Enter URL..." value="https://supreme-s-alt.github.io/HAYAI/">
-            <button id="goBtn">Go</button>-->
+            <input type="text" id="urlInput" placeholder="Enter URL..." value="https://supreme-s-alt.github.io/HAYAI/" display="none">
+            <button id="goBtn" display="none">Go</button>-->
             <div class="status" id="status">Ready</div>
         </div>
         <iframe id="browserFrame" title="Get the Most 0ut of AP – AP Students | College Board."></iframe>
@@ -134,143 +134,121 @@
         const alt6 = "https://uh-summa-lumma-dooma-lumma.onrender.com"
         const alt7 = "https://gamehoststatic.onrender.com"
         const url = window.location.origin;
-        let pass = 1;
+        let pass = 0;
 
         //Make it so that it checks the base link for any of these websites and if they are not found then it restores the search bar
-
-        if (document.title === "Get the Most Out of AP – AP Students | College Board" && pass !== 1) {
-            cloakMechanism();
-        } else if (pass != 1) {
+        if (url === "https://gamehoststatic.onrender.com" || "https://gamehoststatics.onrender.com" || "https://stopbanchess.onrender.com" || "https://rcsamh.onrender.com" || "https://rivercityscience.onrender.com" || "https://collegeboard-htoq.onrender.com" || "https://uh-summa-lumma-dooma-lumma.onrender.com" || "https://gamehoststatic.onrender.com") {
+            if (document.title === "Get the Most Out of AP – AP Students | College Board" && pass !== 1) {
+                cloakMechanism();
+            } else if (pass != 1) {
+                embedInsj();
+            }
+            pass +=1 
+        } else {
             embedInsj();
+            pass +=1 
         }
         
-        // function cloakMechanism () {
-        //     const cloakimg = document.getElementById("cloakimg")
-        //     
-        //     cloakimg.style.visiblity = "visible"
-        //     Make the image appear so it cloaks better
-        //     const win = window.open('about:blank', '_blank');
-        //     if (!win) {
-        //         alert("Please allow pop-ups for this site to work!");
-        //         return;
-        //     }
-
-        //     win.document.body.style.margin = '0';
-        //     win.document.body.style.height = '100vh';
-
-        //     const iframe = win.document.createElement('iframe');
+        function cloakMechanism () {
+            const cloakimg = document.getElementById("cloakimg")
             
-        //     iframe.style.width = '100%';
-        //     iframe.style.height = '100%';
-        //     iframe.style.border = 'none';
-        //     iframe.style.margin = '0';
-        //     iframe.style.padding = '0';
-        //     iframe.style.overflow = 'hidden';
-            
-        //     iframe.src = url;
+            cloakimg.style.visiblity = "visible"
 
-        //     win.document.body.appendChild(iframe);
-            
-        //     end = true;
-
-        //     win.document.title = "Get the Most 0ut of AP – AP Students | College Board.";
-        // };
-
-        const { Controller } = $scramjetController;
-        const { defaultConfig } = $scramjet;
-        const EpoxyTransport = self.EpoxyTransport.default;
-
-        const iframe = document.getElementById("browserFrame");
-        const statusEl = document.getElementById("status");
-
-        let finalLink = null;
-        let finishedEmbed = false;
-        let scramjet = null;
-        let frame = null;
-        //This was build to embed through an embed, so remove the parts that involve the first embed
-        if (!finishedEmbed) {
-            const hashParams = new URLSearchParams(window.location.hash.slice(1));
-            const host = hashParams.get("host");
-            if (host) {
-                try {
-                    const candidate = new URL(host);
-                    if (candidate.pathname === "https://gamehoststatic.onrender.com" 
-                    || candidate.pathname === "https://gamehoststatics.onrender.com"
-                    || candidate.pathname === "https://stopbanchess.onrender.com"
-                    || candidate.pathname === "https://rcsamh.onrender.com"
-                    || candidate.pathname === "https://rivercityscience.onrender.com"
-                    || candidate.pathname === "https://collegeboard-htoq.onrender.com"
-                    || candidate.pathname === "https://uh-summa-lumma-dooma-lumma.onrender.com"
-                    || candidate.pathname === "https://gamehoststatic.onrender.com") {
-                    finalLink = "https://gamehoststatic.onrender.com"
-                    }
-                } catch {
-                    console.warn("Ignoring invalid host parameter");
-                }
+            const win = window.open('about:blank', '_blank');
+            if (!win) {
+                alert("Please allow pop-ups for this site to work!");
+                return;
             }
-            console.log(finalLink);
-        }
 
-        function setStatus(t, err = false) {
-            statusEl.textContent = t;
-            statusEl.style.color = err ? "#ff6b6b" : "#aaa";
-        }
+            win.document.body.style.margin = '0';
+            win.document.body.style.height = '100vh';
 
-        function norm(u) {
-            return u.startsWith("http") ? u : "https://" + u;
-        }
+            const iframe = win.document.createElement('iframe');
+            
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            iframe.style.border = 'none';
+            iframe.style.margin = '0';
+            iframe.style.padding = '0';
+            iframe.style.overflow = 'hidden';
+            
+            iframe.src = url;
 
-        async function init() {
-            try {
-                setStatus("Initializing...");
+            win.document.body.appendChild(iframe);
+            
+            end = true;
 
-                // Wait for the service worker (registered at the bottom) to be active.
-                await navigator.serviceWorker.ready;
-
-                const serviceworker =
-                    navigator.serviceWorker.controller ??
-                    (await navigator.serviceWorker.ready).active;
-
-                // STEP 3: Connect a transport to a wisp server.
-                // Use your own wisp server in production. Public ones get
-                // rate-limited and can go offline.
-                const transport = new EpoxyTransport({
-                    wisp: "wss://wisp.mercurywork.shop/"
-                });
-
-                await transport.init();
-
-                // STEP 4: Create the controller. defaultConfig is fine to start with;
-                // change it if you need custom rewriting behaviour.
-                scramjet = new Controller({
-                    serviceworker,
-                    transport,
-                    scramjetConfig: defaultConfig
-                });
-
-                await scramjet.wait();
-
-                // STEP 5: Bind a frame to the <iframe> and navigate it.
-                frame = scramjet.createFrame(iframe);
-                if (finalLink) {
-                    frame.go(finalLink)
-                } else {
-                    frame.go("https://gamehoststatic.onrender.com");
-                }
-                if (frame === finalLink) {
-                    finishedEmbed = true;
-                }
-                setStatus("Ready");
-            } catch (e) {
-                console.error(e);
-                setStatus(e.message, true);
-            }
+            win.document.title = "Get the Most 0ut of AP – AP Students | College Board.";
         };
+
+        function embedInsj() {
+            const { Controller } = $scramjetController;
+            const { defaultConfig } = $scramjet;
+            const EpoxyTransport = self.EpoxyTransport.default;
+
+            const iframe = document.getElementById("browserFrame");
+            const statusEl = document.getElementById("status");
+
+            let scramjet = null;
+            let frame = null;
+
+            function setStatus(t, err = false) {
+                statusEl.textContent = t;
+                statusEl.style.color = err ? "#ff6b6b" : "#aaa";
+            }
+
+            function norm(u) {
+                return u.startsWith("http") ? u : "https://" + u;
+            }
+
+            async function init() {
+                try {
+                    setStatus("Initializing...");
+
+                    // Wait for the service worker (registered at the bottom) to be active.
+                    await navigator.serviceWorker.ready;
+
+                    const serviceworker =
+                        navigator.serviceWorker.controller ??
+                        (await navigator.serviceWorker.ready).active;
+
+                    // STEP 3: Connect a transport to a wisp server.
+                    // Use your own wisp server in production. Public ones get
+                    // rate-limited and can go offline.
+                    const transport = new EpoxyTransport({
+                        wisp: "wss://wisp.mercurywork.shop/"
+                    });
+
+                    await transport.init();
+
+                    // STEP 4: Create the controller. defaultConfig is fine to start with;
+                    // change it if you need custom rewriting behaviour.
+                    scramjet = new Controller({
+                        serviceworker,
+                        transport,
+                        scramjetConfig: defaultConfig
+                    });
+
+                    await scramjet.wait();
+
+                    // STEP 5: Bind a frame to the <iframe> and navigate it.
+                    frame = scramjet.createFrame(iframe);
+                    if (finalLink) {
+                        frame.go(finalLink);
+                    } else {
+                        frame.go("https://collegeboard.com");
+                    }
+                    setStatus("Ready");
+                } catch (e) {
+                    console.error(e);
+                    setStatus(e.message, true);
+                }
+            };
+        }
         // Navigate the iframe to whatever is typed in the URL bar.
         //function go() {
         //    url = norm(urlInput.value);
         //    urlInput.value = url;
-        //    url = finalLink;
         //    ;
         //}
 
