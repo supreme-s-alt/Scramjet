@@ -137,7 +137,7 @@
         let pass = 0;
 
         //Make it so that it checks the base link for any of these websites and if they are not found then it restores the search bar
-        if (url === "https://gamehoststatic.onrender.com" || "https://gamehoststatics.onrender.com" || "https://stopbanchess.onrender.com" || "https://rcsamh.onrender.com" || "https://rivercityscience.onrender.com" || "https://collegeboard-htoq.onrender.com" || "https://uh-summa-lumma-dooma-lumma.onrender.com" || "https://gamehoststatic.onrender.com") {
+        if ((url === "https://gamehoststatic.onrender.com" || "https://gamehoststatics.onrender.com" || "https://stopbanchess.onrender.com" || "https://rcsamh.onrender.com" || "https://rivercityscience.onrender.com" || "https://collegeboard-htoq.onrender.com" || "https://uh-summa-lumma-dooma-lumma.onrender.com" || "https://gamehoststatic.onrender.com") && (pass != 1)) {
             if (document.title === "Get the Most Out of AP – AP Students | College Board" && pass !== 1) {
                 cloakMechanism();
             } else if (pass != 1) {
@@ -233,17 +233,19 @@
 
                     // STEP 5: Bind a frame to the <iframe> and navigate it.
                     frame = scramjet.createFrame(iframe);
-                    if (finalLink) {
-                        frame.go(finalLink);
-                    } else {
-                        frame.go("https://collegeboard.com");
-                    }
+                    frame.go("https://collegeboard.com");
                     setStatus("Ready");
                 } catch (e) {
                     console.error(e);
                     setStatus(e.message, true);
                 }
             };
+
+            if ("serviceWorker" in navigator) {
+                navigator.serviceWorker.register("/sw.js").then(init);
+            } else {
+                setStatus("No service worker support", true);
+            }
         }
         // Navigate the iframe to whatever is typed in the URL bar.
         //function go() {
@@ -258,13 +260,6 @@
         //    if (e.key === "Enter") go();
         //});
 
-        // STEP 6: Register the service worker, then boot once it's ready.
-        // Service workers only run in a secure context: https:// or http://localhost.
-        if ("serviceWorker" in navigator) {
-            navigator.serviceWorker.register("/sw.js").then(init);
-        } else {
-            setStatus("No service worker support", true);
-        }
     </script>
 </body>
 
